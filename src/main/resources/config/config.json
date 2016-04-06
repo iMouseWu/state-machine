@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "name": "关闭订单事件",
+      "code": "E_close_order"
+    }
+  ],
+  "commands": [
+    {
+      "name": "退款命令",
+      "code": "C_refund",
+      "bean": "refundCommand"
+    },
+    {
+      "name": "状态改变命令",
+      "code": "C_stateChange",
+      "bean": "stateChangeCommand"
+    }
+  ],
+  "states": [
+    {
+      "name": "已付款状态",
+      "code": "S_has_paid",
+      "transitions": [
+        {
+          "toStateCode": "S_order_close",
+          "triggerEvent": "E_close_order",
+          "reachCommands": [
+            "C_refund"
+          ],
+          "leaveCommands": [
+            "C_stateChange"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "已付款状态",
+      "code": "S_has_paid",
+      "transitions": [
+        {
+          "toStateCode": "S_order_close",
+          "triggerEvent": "E_close_order",
+          "reachCommandMap": {
+            "": [
+              "",
+              ""
+            ],
+            "": [
+              "",
+              ""
+            ]
+          },
+          "leaveCommandMap": {
+            "": [
+              "",
+              ""
+            ],
+            "": [
+              "",
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

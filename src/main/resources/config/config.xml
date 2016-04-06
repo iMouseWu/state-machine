@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <state cade="S_has_paid" name="已付款状态">
+        <transitions>
+            <transition>
+                <tostate>S_order_close</tostate>
+                <triggerEvent>E_close_order</triggerEvent>
+                <reachCommands>
+                    <command>C_refund</command>
+                </reachCommands>
+                <leaveCommands>
+                    <command>C_stateChange</command>
+                </leaveCommands>
+            </transition>
+            <transition></transition>
+        </transitions>
+    </state>
+
+
+    <state cade="S_order_close" name="订单关闭状态">
+
+    </state>
+
+
+    <event code="E_close_order" name="关闭订单事件"/>
+
+
+    <command code="C_refund" name="退款命令" bean="refundCommand"/>
+    <command code="C_stateChange" name="状态改变命令" bean="stateChangeCommand"/>
+
+</root>
